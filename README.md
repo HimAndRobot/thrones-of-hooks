@@ -8,7 +8,6 @@ Este projeto é um sistema desenvolvido para facilitar o teste de APIs e retorno
 - **Visualização em Tempo Real**: Utilizando Livewire, oferece uma interface dinâmica que exibe as solicitações recebidas sem a necessidade de recarregar a página.
 - **Notificações Instantâneas**: Com Reverb, o sistema envia notificações em tempo real sobre novas entradas de webhooks, facilitando o monitoramento e a resposta rápida.
 - **Logs Detalhados**: Armazena detalhes das solicitações recebidas para análise posterior.
-- **Filtros e Pesquisas**: Permite filtrar e pesquisar através dos registros de webhooks recebidos para encontrar informações específicas rapidamente.
 
 ## Tecnologias Utilizadas
 
