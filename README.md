@@ -13,7 +13,7 @@ Este projeto é um sistema desenvolvido para facilitar o teste de APIs e retorno
 
 - [Laravel](https://laravel.com/): Framework PHP para construção de aplicações web robustas.
 - [Livewire](https://laravel-livewire.com/): Framework full-stack para Laravel que facilita a construção de interfaces dinâmicas.
-- [Reverb](https://github.com/tadasv/laravel-reverb): Biblioteca para notificações em tempo real com suporte a WebSockets.
+- [Reverb](https://reverb.laravel.com/): Biblioteca para notificações em tempo real com suporte a WebSockets.
 
 ## Pré-requisitos
 
