@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+Route::get('/thrones-of-hooks', \App\Livewire\Main::class);
+
 Route::domain('{webhookAlias}.' . env('APP_URL'))->group(function () {
     Route::match([
         'get',
@@ -21,13 +23,10 @@ Route::match([
 ],
 '/teste/{webhookAlias}', [\App\Http\Controllers\WebhookController::class, 'processPayload']);
 
-Route::get('/', \App\Livewire\Main::class);
-
-Route::get('/teste', \App\Livewire\Teste::class);
-
-Route::get('/socket/{message}', function ($message) {
-    \App\Events\SocketTeste::dispatch($message);
-    return response()->json(['message' => 'Hello World!']);
+Route::get('/', function () {
+    return response()->json([
+        'This homepage is in construction!',
+    ]);
 });
 
 
