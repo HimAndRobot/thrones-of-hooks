@@ -3,9 +3,13 @@
 use Illuminate\Support\Facades\Route;
 
 Route::domain('{webhookAlias}.' . env('APP_URL'))->group(function () {
-    Route::get('', function ($webhookAlias) {
-        return response()->json(['message' => "Webhook $webhookAlias received!"]);
-    });
+    Route::match([
+        'get',
+        'post',
+        'put',
+        'patch',
+        'delete',
+    ], '/', [\App\Http\Controllers\WebhookController::class, 'processPayload']);
 });
 
 Route::match([
