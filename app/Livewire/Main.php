@@ -33,7 +33,7 @@ class Main extends Component
         $webhook->alias = $alias;
         $webhook->character = $randomCharacter;
         $webhook->user_session_id = session()->getId();
-        $webhook->url = 'http://' . $alias . '.' . env('APP_URL');
+        $webhook->url = env('APP_ENV') == 'production' ? 'https://' : 'http://' . $alias . '.' . env('APP_URL');
         $webhook->save();
 
         $this->dispatch('selectOpen');
