@@ -1,66 +1,98 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Thrones of Hooks
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este projeto é um sistema desenvolvido para facilitar o teste de APIs e retornos de webhooks. Construído com Laravel, Livewire e Reverb, ele oferece uma interface interativa e notificações em tempo real para monitorar e gerenciar solicitações de webhooks.
 
-## About Laravel
+## Funcionalidades
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- **Recebimento de Webhooks**: Permite receber solicitações de webhooks de diferentes fontes.
+- **Visualização em Tempo Real**: Utilizando Livewire, oferece uma interface dinâmica que exibe as solicitações recebidas sem a necessidade de recarregar a página.
+- **Notificações Instantâneas**: Com Reverb, o sistema envia notificações em tempo real sobre novas entradas de webhooks, facilitando o monitoramento e a resposta rápida.
+- **Logs Detalhados**: Armazena detalhes das solicitações recebidas para análise posterior.
+- **Filtros e Pesquisas**: Permite filtrar e pesquisar através dos registros de webhooks recebidos para encontrar informações específicas rapidamente.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tecnologias Utilizadas
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- [Laravel](https://laravel.com/): Framework PHP para construção de aplicações web robustas.
+- [Livewire](https://laravel-livewire.com/): Framework full-stack para Laravel que facilita a construção de interfaces dinâmicas.
+- [Reverb](https://github.com/tadasv/laravel-reverb): Biblioteca para notificações em tempo real com suporte a WebSockets.
 
-## Learning Laravel
+## Pré-requisitos
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- PHP >= 8.2
+- Composer
+- Node.js & NPM
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+## Instalação
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+1. Clone o repositório:
+    ```sh
+    git clone https://github.com/HimAndRobot/thornes-of-hooks.git
+    cd thrones-of-hooks
+    ```
 
-## Laravel Sponsors
+2. Instale as dependências do PHP e do Node.js:
+    ```sh
+    composer install
+    npm install
+    npm run dev
+    ```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+3. Configure o arquivo `.env`:
+    ```sh
+    cp .env.example .env
+    php artisan key:generate
+    ```
 
-### Premium Partners
+4. Configure a conexão com o Redis no arquivo `.env`:
+    ```dotenv
+    REVERB_APP_ID=YOUR_APP_ID
+    REVERB_APP_KEY=YOUR_APP_KEY
+    REVERB_APP_SECRET=YOUR_APP_SECRET
+    REVERB_HOST="localhost"
+    REVERB_PORT=8080
+    REVERB_SCHEME=http
+    ```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+5. Execute as migrações e seeders:
+    ```sh
+    php artisan migrate --seed
+    ```
 
-## Contributing
+6. Inicie o servidor:
+    ```sh
+    php artisan serve
+    ```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+7. Inicie o servidor de WebSockets:
+    ```sh
+    php artisan reverb:start --debug
+    ```
 
-## Code of Conduct
+## Uso
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+- Acesse a aplicação em `http://localhost:8000`
+- Utilize a interface para configurar e monitorar os webhooks recebidos
+- Visualize as entradas de webhooks em tempo real e acesse os detalhes completos de cada solicitação
 
-## Security Vulnerabilities
+## Estrutura do Projeto
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- `app/Http/Livewire`: Componentes Livewire para interatividade
+- `routes/web.php`: Rotas principais da aplicação
 
-## License
+## Contribuição
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+1. Fork o repositório
+2. Crie sua branch de feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
+
+## Licença
+
+Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
+
+## Contato
+
+Gean Pedro da Silva - geanpn@gmail.com
+
+Link do Projeto: [https://github.com/HimAndRobot/thornes-of-hooks](https://github.com/HimAndRobot/thornes-of-hooks)
