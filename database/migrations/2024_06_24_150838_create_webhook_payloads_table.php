@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(\App\Models\Webhook::class)->constrained()->cascadeOnDelete();
             $table->longText('payload');
+            $table->string('path')->nullable();
             $table->longText('headers');
             $table->string('user_agent');
             $table->string('ip');

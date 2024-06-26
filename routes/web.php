@@ -11,7 +11,7 @@ Route::domain('{webhookAlias}.' . env('APP_URL'))->group(function () {
         'put',
         'patch',
         'delete',
-    ], '/', [\App\Http\Controllers\WebhookController::class, 'processPayload']);
+    ], '/{path?}', [\App\Http\Controllers\WebhookController::class, 'processPayload'])->where('path', '.+');
 });
 
 Route::match([
@@ -21,7 +21,7 @@ Route::match([
     'patch',
     'delete',
 ],
-'/teste/{webhookAlias}', [\App\Http\Controllers\WebhookController::class, 'processPayload']);
+'/teste/{webhookAlias}/{path?}', [\App\Http\Controllers\WebhookController::class, 'processPayload'])->where('path', '.+');
 
 Route::get('/', function () {
     return response()->json([

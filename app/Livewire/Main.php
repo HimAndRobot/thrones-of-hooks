@@ -5,6 +5,7 @@ namespace App\Livewire;
 use App\Events\SocketTeste;
 use App\Models\Webhook;
 use Dflydev\DotAccessData\Data;
+use http\Cookie;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
@@ -14,14 +15,7 @@ class Main extends Component
     use LivewireAlert;
 
     public $options;
-
     public $selectOption = null;
-    public $selectPayload = null;
-
-    public function changePayload($index)
-    {
-        $this->selectPayload = $this->selectOption['payloads'][$index];
-    }
 
     public function newWebhook()
     {
@@ -36,14 +30,14 @@ class Main extends Component
         $webhook->url = (env('APP_ENV') == 'production' ? 'https://' : 'http://') . $alias . '.' . env('APP_URL');
         $webhook->save();
 
-        $this->dispatch('selectOpen');
+        $this->dispatch('select-open');
         $this->alert('success', 'Webhook created successfully!');
     }
 
     #[On('echo:public,SocketTeste')]
     public function refreshOptions($data)
     {
-        if ($data['id'] == $this->selectOption['id']) {
+        if ($data['id'] == ($this->selectOption['id'] ?? '')) {
             $index = array_search($this->selectOption, $this->options);
             $this->selectOption = Webhook::where('user_session_id', session()->getId())->with(['payloads'])->where('id', $data['id'])->orderBy('id', 'desc')->first()->toArray();
             $this->alert('success', 'New payload received!');

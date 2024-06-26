@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class WebhookController extends Controller
 {
-    public function processPayload(Request $request, $webhookAlias)
+    public function processPayload(Request $request, $webhookAlias, $path = '')
     {
         if (!\App\Models\Webhook::where('alias', $webhookAlias)->exists()) {
             return response()->json(['message' => 'Webhook not found!'], 404);
@@ -26,6 +26,7 @@ class WebhookController extends Controller
         $webhookPayload->payload = json_encode($payload);
         $webhookPayload->headers = json_encode($headers);
         $webhookPayload->user_agent = $userAgent;
+        $webhookPayload->path = "/$path";
         $webhookPayload->ip = $ip;
         $webhookPayload->platform = $platform;
         $webhookPayload->method = $method;
