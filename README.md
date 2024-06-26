@@ -94,4 +94,6 @@ Distribuído sob a licença MIT. Veja `LICENSE` para mais informações.
 
 Gean Pedro da Silva - geanpn@gmail.com
 
+Test Live: [https://geanpedro.com.br/thrones-of-hooks](https://geanpedro.com.br/thrones-of-hooks)
+
 Link do Projeto: [https://github.com/HimAndRobot/thornes-of-hooks](https://github.com/HimAndRobot/thornes-of-hooks)
